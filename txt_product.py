@@ -4,6 +4,7 @@ import openpyxl
 """
 获取生成的想法内容，自动生成txt文件，并把获取的内容注入进去。
 
+两句
 """
 
 def export_column_to_txt(excel_file, column_letter, output_folder):
