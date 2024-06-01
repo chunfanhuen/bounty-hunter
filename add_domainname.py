@@ -5,7 +5,7 @@ from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
 # 配置部分
-folder_path = r'C:\Users\SFZDSB\Desktop\文章5'  # 文章所在的文件夹路径
+folder_path = r'C:\Users\SFZDSB\Desktop\文章7'  # 文章所在的文件夹路径
 excel_path = r'C:\Users\SFZDSB\Desktop\domain name.xlsx'  # 存储域名的Excel文件路径
 domain_column = 'A'  # 域名所在的Excel列
 articles_per_domain = 5  # 每个域名添加到几篇文章中
@@ -29,7 +29,11 @@ def add_hyperlink(paragraph, url, text, color="0000FF", underline=True):
         r_pr.append(c)
 
     # Remove or keep underline
-    if not underline:
+    if underline:
+        u = OxmlElement('w:u')
+        u.set(qn('w:val'), "single")
+        r_pr.append(u)
+    else:
         u = OxmlElement('w:u')
         u.set(qn('w:val'), "none")
         r_pr.append(u)
@@ -62,3 +66,4 @@ for i, article_path in enumerate(articles):
     document.save(article_path)
 
 print("操作完成，每篇文章已添加相应的超链接域名。")
+
