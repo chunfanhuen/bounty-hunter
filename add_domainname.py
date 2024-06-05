@@ -5,8 +5,8 @@ from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
 # 配置部分
-folder_path = r'C:\Users\SFZDSB\Desktop\文章7'  # 文章所在的文件夹路径
-excel_path = r'C:\Users\SFZDSB\Desktop\domain name.xlsx'  # 存储域名的Excel文件路径
+folder_path = r'D:\Desktop\文章13'  # 文章所在的文件夹路径
+excel_path = r'D:\Desktop\domain name.xlsx'  # 存储域名的Excel文件路径
 domain_column = 'A'  # 域名所在的Excel列
 articles_per_domain = 5  # 每个域名添加到几篇文章中
 
@@ -62,7 +62,7 @@ for i, article_path in enumerate(articles):
     document = Document(article_path)
     domain = domains[i // articles_per_domain]
     paragraph = document.add_paragraph()
-    add_hyperlink(paragraph, domain, f"想了解更多文章：{domain}")
+    add_hyperlink(paragraph, domain, f"其他回答：{domain}")
     document.save(article_path)
 
 print("操作完成，每篇文章已添加相应的超链接域名。")

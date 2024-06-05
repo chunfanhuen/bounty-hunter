@@ -49,7 +49,7 @@ def find_files_with_less_than_100_words(folder_path):
 
 
 # 示例使用
-folder_path = r'C:\Users\SFZDSB\Desktop\output'
+folder_path = r'D:\Desktop\output'
 files_with_few_words = find_files_with_less_than_100_words(folder_path)
 
 if files_with_few_words:

@@ -3,7 +3,6 @@ import os
 
 """
 获取生成的想法内容，自动生成txt文件，并把获取的内容注入进去。
-
 """
 
 def export_column_to_txt(excel_file, column_letter, output_folder):
@@ -50,8 +49,8 @@ def export_titles_to_txt(excel_file, title_column_letter, output_folder):
                 txt_file.write(f'{title}\n')
 
 # 使用示例
-excel_file_path = r'C:\Users\SFZDSB\Desktop\想法.xlsx'  # 请替换为你的Excel文件路径
-output_folder_path = r'C:\Users\SFZDSB\Desktop\想法9'      # 请替换为你的输出文件夹路径
+excel_file_path = r'D:\Desktop\想法.xlsx'  # 请替换为你的Excel文件路径
+output_folder_path = r'D:\Desktop\想法14'      # 请替换为你的输出文件夹路径
 column_to_export = 'C'                            # 要导出的列
 title_column_to_export = 'B'  # 标题列
 export_column_to_txt(excel_file_path, column_to_export, output_folder_path)

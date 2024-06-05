@@ -11,15 +11,15 @@ client = openai.OpenAI(
 )
 
 # 提示词
-prompt_file = r'C:\Users\SFZDSB\Desktop\prompt.txt'  # 提示词路径
+prompt_file = r'D:\Desktop\prompt.txt'  # 提示词路径
 with open(prompt_file, 'r', encoding='utf-8') as file:
     prompt_prefix = file.read()
 
 # 读取Excel文件
-excel_file = r'C:\Users\SFZDSB\Desktop\title.xlsx'
+excel_file = r'D:\Desktop\title.xlsx'
 df = pd.read_excel(excel_file)
 # 指定保存文件的文件夹路径
-output_folder = r'C:\Users\SFZDSB\Desktop\output'
+output_folder = r'D:\Desktop\output'
 
 # 循环读取每一个标题，并生成文章
 for index, row in df.iterrows():
