@@ -40,7 +40,7 @@ def export_titles_to_txt(excel_file, title_column_letter, output_folder):
         os.makedirs(output_folder)
 
     # 生成两个txt文件，每个文件包含三十个标题
-    for part in range(2):
+    for part in range(4):
         start_index = part * 30
         end_index = start_index + 30
         file_name = os.path.join(output_folder, f'想法标题{part + 1}.txt')
@@ -49,8 +49,8 @@ def export_titles_to_txt(excel_file, title_column_letter, output_folder):
                 txt_file.write(f'{title}\n')
 
 # 使用示例
-excel_file_path = r'D:\Desktop\想法.xlsx'  # 请替换为你的Excel文件路径
-output_folder_path = r'D:\Desktop\想法14'      # 请替换为你的输出文件夹路径
+excel_file_path = r'C:\Users\14534\Desktop\想法.xlsx'  # 请替换为你的Excel文件路径
+output_folder_path = r'C:\Users\14534\Desktop\想法(2)'      # 请替换为你的输出文件夹路径
 column_to_export = 'C'                            # 要导出的列
 title_column_to_export = 'B'  # 标题列
 export_column_to_txt(excel_file_path, column_to_export, output_folder_path)

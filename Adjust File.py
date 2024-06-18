@@ -27,7 +27,7 @@ def process_docx_files(folder_path):
 
 
 # 指定文件夹路径
-folder_path = r'D:\Desktop\output'
+folder_path = r'C:\Users\14534\Desktop\output'
 
 # 处理文件夹中的所有docx文件
 process_docx_files(folder_path)

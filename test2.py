@@ -11,21 +11,21 @@ client = openai.OpenAI(
 )
 
 # 提示词
-prompt_file = r'D:\Desktop\prompt.txt'  # 提示词路径
+prompt_file = r'C:\Users\14534\Desktop\prompt.txt'  # 提示词路径
 with open(prompt_file, 'r', encoding='utf-8') as file:
     prompt_prefix = file.read()
 
 # 读取Excel文件
-excel_file = r'D:\Desktop\title.xlsx'
+excel_file = r'C:\Users\14534\Desktop\title.xlsx'
 df = pd.read_excel(excel_file)
 # 指定保存文件的文件夹路径
-output_folder = r'D:\Desktop\output'
+output_folder = r'C:\Users\14534\Desktop\output'
 
 # 循环读取每一个标题，并生成文章
 for index, row in df.iterrows():
-    title = row['Title']  # Excel中的标题列名为'Title'
+    title = row  # 获取标题列
     prompt = f"{prompt_prefix}{title}"
-
+    print(title)
     # 调用OpenAI API生成文章
     response = chat_completion = client.chat.completions.create(
         messages=[
