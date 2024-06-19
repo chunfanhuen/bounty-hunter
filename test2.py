@@ -17,39 +17,46 @@ with open(prompt_file, 'r', encoding='utf-8') as file:
 
 # 读取Excel文件
 excel_file = r'C:\Users\14534\Desktop\title.xlsx'
-df = pd.read_excel(excel_file)
+df = pd.read_excel(excel_file,usecols='A',header=None)
 # 指定保存文件的文件夹路径
 output_folder = r'C:\Users\14534\Desktop\output'
-
+error_titles = []
 # 循环读取每一个标题，并生成文章
 for index, row in df.iterrows():
-    title = row  # 获取标题列
+    title = row.iloc[0]  # 获取标题列
     prompt = f"{prompt_prefix}{title}"
-    print(title)
-    # 调用OpenAI API生成文章
-    response = chat_completion = client.chat.completions.create(
-        messages=[
-            {
-                "role": "user",
-                "content": prompt,
-                "max_tokens": "3000",
-            }
-        ],
-        model="gpt-3.5-turbo",
-    )
-    print(response)
-    article_content = response.choices[0].message.content.strip()
+    try:
+        # 调用OpenAI API生成文章
+        response = chat_completion = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt,
+                    "max_tokens": "3000",
+                }
+            ],
+            model="gpt-3.5-turbo",
+        )
+        print(response)
+        article_content = response.choices[0].message.content.strip()
 
-    # 创建docx文件并保存内容
-    doc = Document()
-    # doc.add_heading(title, 0)  # 文章标题可删除
-    doc.add_paragraph(article_content)
+        # 创建docx文件并保存内容
+        doc = Document()
+        # doc.add_heading(title, 0)  # 文章标题可删除
+        doc.add_paragraph(article_content)
 
-    # 文件命名为“数字+题目”
-    file_name = f"{index + 1}_{title}.docx"
-    file_path = os.path.join(output_folder, file_name)
-    doc.save(file_path)
+        # 文件命名为“数字+题目”
+        file_name = f"{index + 1}_{title}.docx"
+        file_path = os.path.join(output_folder, file_name)
+        doc.save(file_path)
 
-    print(f"Article '{title}' has been saved as '{file_name}'.")
-
+        print(f"Article '{title}' has been saved as '{file_name}'.")
+    except Exception as e:
+        print(f"无法生成文档的标题名是：'{title}':{e}")
+        error_titles.append(title)
 print("All articles have been generated and saved.")
+
+if error_titles:
+    print("无法保存的标题是：")
+    for error_title in error_titles:
+        print(error_title)
