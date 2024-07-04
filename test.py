@@ -72,7 +72,8 @@ try:
 
 except requests.exceptions.RequestException as e:
     print(f"Error occurred while processing {home_url}: {e}")
-
+# 时间排序
+news_data.sort(key=lambda x: x['date'])
 # 写入excel文件
 wb = openpyxl.Workbook()
 ws = wb.active
